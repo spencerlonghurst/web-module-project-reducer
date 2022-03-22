@@ -5,6 +5,7 @@ export const CHANGE_OPERATION = "CHANGE_OPERATION";
 export const CLEAR_DISPLAY = 'CLEAR_DISPLAY';
 export const APPLY_MEMORY = 'APPLY_MEMORY';
 export const OPERATE_MEMORY = 'OPERATE_MEMORY';
+export const CLEAR_MEMORY = 'CLEAR_MEMORY';
 
 export const addOne = () => {
     return({type:ADD_ONE});
@@ -24,4 +25,7 @@ export const applyMemory = (currentValue) => {
 }
 export const operateMemory = (currentValue) => {
     return ({type:OPERATE_MEMORY, payload: currentValue})
+}
+export const clearMemory = () => {
+    return ({type:CLEAR_MEMORY})
 }
