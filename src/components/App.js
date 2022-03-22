@@ -6,6 +6,9 @@ import { initialState } from '../reducers';
 import { applyNumber } from '../actions/index.js';
 import { changeOperation } from '../actions/index.js';
 import { clearDisplay } from '../actions/index.js';
+import { applyMemory } from '../actions/index.js';
+import { operateMemory } from '../actions/index.js';
+
 
 
 import './App.css';
@@ -15,7 +18,7 @@ import CalcButton from './CalcButton';
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // console.log('this is the props.click:', onClick);
+  console.log('this is the state:', state);
 
   const handleNumberClicks = number => {
     dispatch(applyNumber(number))
@@ -28,6 +31,15 @@ function App() {
   const handleClearClick = () => {
     dispatch(clearDisplay())
   }
+
+  const handleApplyMemory = () => {
+    dispatch(applyMemory())
+  }
+
+  const handleOperateMemory = currentValue => {
+    dispatch(operateMemory(currentValue))
+  }
+
 
   return (
    <div className="App">
@@ -46,8 +58,8 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
+              <CalcButton value={"M+"} onClick={() => handleApplyMemory()}/>
+              <CalcButton value={"MR"} onClick={() => handleOperateMemory(state.total)}/>
               <CalcButton value={"MC"}/>
             </div>
 
